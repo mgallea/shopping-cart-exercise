@@ -31,6 +31,8 @@ print("")
 
 #create the list to store the item numbers
 receipt_list = []
+receipt_total = 0.0
+receipt_counter = 0
 
 # While loop to determine products
 while True:
@@ -42,7 +44,12 @@ while True:
 
     # demonstrating ability to recognize what the input was, although you might also want to check its datatype
     if user_input != "Done":
-        receipt_list.append(user_input)
+            matching_product = [product for product in products if product["id"] == int(user_input)]
+            if matching_product != []:
+                receipt_list.append(matching_product)
+                receipt_counter = receipt_counter + 1
+            else:
+                print("Uh oh! You have entered an invalid product ID. Please try again")
 
 #print the receipt
 print("")   
@@ -56,3 +63,6 @@ print("Checkout Time: " + now.strftime("%Y-%m-%d %H:%M:%S"))
 print("------------------------------------------------------------")
 print("Shopping Cart Items:")
 print(receipt_list)
+print("Receipt Total Is: " + str(receipt_total))
+
+
