@@ -1,4 +1,5 @@
 # shopping_cart.py
+import datetime
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -25,6 +26,7 @@ products = [
 
 #Introduce the User
 print("Welcome to Matt's Grocery Store! You are now ready to create a new receipt.")
+
 print("")
 
 # While loop to determine products
@@ -38,3 +40,15 @@ while True:
     # demonstrating ability to recognize what the input was, although you might also want to check its datatype
     if user_input != "Done":
         print("YOUR INPUT WAS: " + user_input)
+
+#print the receipt
+print("")   
+print("------------------------------------------------------------")
+print("Matt's Grocery Store")
+print("------------------------------------------------------------")
+print("www.mystore.com")
+print("+1 (202) 555-5555")
+now = datetime.datetime.now()
+print("Checkout Time: " + now.strftime("%Y-%m-%d %H:%M:%S"))
+print("------------------------------------------------------------")
+print("Shopping Cart Items:")
