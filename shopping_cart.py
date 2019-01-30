@@ -29,6 +29,9 @@ print("Welcome to Matt's Grocery Store! You are now ready to create a new receip
 
 print("")
 
+#create the list to store the item numbers
+receipt_list = []
+
 # While loop to determine products
 while True:
     # capturing user input and storing in a variable
@@ -39,7 +42,7 @@ while True:
 
     # demonstrating ability to recognize what the input was, although you might also want to check its datatype
     if user_input != "Done":
-        print("YOUR INPUT WAS: " + user_input)
+        receipt_list.append(user_input)
 
 #print the receipt
 print("")   
@@ -52,3 +55,4 @@ now = datetime.datetime.now()
 print("Checkout Time: " + now.strftime("%Y-%m-%d %H:%M:%S"))
 print("------------------------------------------------------------")
 print("Shopping Cart Items:")
+print(receipt_list)
