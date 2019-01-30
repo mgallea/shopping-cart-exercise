@@ -48,6 +48,7 @@ while True:
             if matching_product != []:
                 receipt_list.append(matching_product)
                 receipt_counter = receipt_counter + 1
+                receipt_total = receipt_total + float(matching_product[0]["price"])
             else:
                 print("Uh oh! You have entered an invalid product ID. Please try again")
 
