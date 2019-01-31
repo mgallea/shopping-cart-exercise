@@ -63,7 +63,11 @@ now = datetime.datetime.now()
 print("Checkout Time: " + now.strftime("%Y-%m-%d %H:%M:%S"))
 print("------------------------------------------------------------")
 print("Shopping Cart Items:")
-print(receipt_list)
-print("Receipt Total Is: " + str(receipt_total))
+rec_count = 0
+for item in receipt_list:
+    print("+" + str(item[0]["name"]) + " ($" + str("%0.2f" % item[0]["price"]) + ")")
+    rec_count = rec_count + 1
+print("Subtotal: " + str("%0.2f" % receipt_total))
+
 
 
