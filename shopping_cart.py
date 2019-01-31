@@ -31,7 +31,7 @@ print("")
 
 #create the list to store the item numbers
 receipt_list = []
-receipt_total = 0.0
+subtotal = 0.0
 receipt_counter = 0
 
 # While loop to determine products
@@ -48,7 +48,7 @@ while True:
             if matching_product != []:
                 receipt_list.append(matching_product)
                 receipt_counter = receipt_counter + 1
-                receipt_total = receipt_total + float(matching_product[0]["price"])
+                subtotal = subtotal + float(matching_product[0]["price"])
             else:
                 print("Uh oh! You have entered an invalid product ID. Please try again")
 
@@ -67,7 +67,12 @@ rec_count = 0
 for item in receipt_list:
     print("+" + str(item[0]["name"]) + " ($" + str("%0.2f" % item[0]["price"]) + ")")
     rec_count = rec_count + 1
-print("Subtotal: " + str("%0.2f" % receipt_total))
+print("Subtotal: " + str("%0.2f" % subtotal))
 
+#calculate tax
+tax_rate  = 0.06
+
+total_tax = subtotal * (1+tax_rate)
+print("Sales Tax: (6%): $" + str("%0.2f" % total_tax))
 
 
