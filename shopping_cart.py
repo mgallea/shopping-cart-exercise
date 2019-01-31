@@ -65,14 +65,21 @@ print("------------------------------------------------------------")
 print("Shopping Cart Items:")
 rec_count = 0
 for item in receipt_list:
-    print("+" + str(item[0]["name"]) + " ($" + str("%0.2f" % item[0]["price"]) + ")")
+    print("+ " + str(item[0]["name"]) + " ($" + str("%0.2f" % item[0]["price"]) + ")")
     rec_count = rec_count + 1
+print("------------------------------------------------------------")
 print("Subtotal: " + str("%0.2f" % subtotal))
 
 #calculate tax
 tax_rate  = 0.06
 
-total_tax = subtotal * (1+tax_rate)
+total_tax = subtotal * (tax_rate)
 print("Sales Tax: (6%): $" + str("%0.2f" % total_tax))
 
+#Caclulate Total price
+total_price = subtotal + total_tax
+print("Total: $" + str("%0.2f" % total_price))
+print("------------------------------------------------------------")
+print("You have purchased " + str(receipt_counter) + " items")
+print("")
 
