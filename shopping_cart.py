@@ -1,5 +1,6 @@
 # shopping_cart.py
 import datetime
+import locale
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -23,6 +24,16 @@ products = [
     {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
+
+#Convert to USD Format
+def to_usd(value):
+        locale.setlocale(locale.LC_ALL, 'en_US.utf-8') 
+        s = locale.currency(value, grouping=True)
+        return s
+
+print(to_usd(100))
+print(to_usd(1000.8484729838928942))
+print(to_usd(10))
 
 #Introduce the User
 print("Welcome to Matt's Grocery Store! You are now ready to create a new receipt.")
@@ -65,20 +76,20 @@ print("------------------------------------------------------------")
 print("Shopping Cart Items:")
 rec_count = 0
 for item in receipt_list:
-    print("+ " + str(item[0]["name"]) + " ($" + str("%0.2f" % item[0]["price"]) + ")")
+    print("+ " + str(item[0]["name"]) + " (" + to_usd(item[0]["price"]) + ")")
     rec_count = rec_count + 1
 print("------------------------------------------------------------")
-print("Subtotal: " + str("%0.2f" % subtotal))
+print("Subtotal: " + to_usd(subtotal))
 
 #calculate tax
 tax_rate  = 0.06
 
 total_tax = subtotal * (tax_rate)
-print("Sales Tax: (6%): $" + str("%0.2f" % total_tax))
+print("Sales Tax: (6%): " +  to_usd(total_tax))
 
 #Caclulate Total price
 total_price = subtotal + total_tax
-print("Total: $" + str("%0.2f" % total_price))
+print("Total: " + to_usd(total_price))
 print("------------------------------------------------------------")
 print("You have purchased " + str(receipt_counter) + " items")
 print("")
