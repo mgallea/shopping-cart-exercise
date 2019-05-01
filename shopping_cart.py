@@ -1,6 +1,7 @@
 # shopping_cart.py
 import datetime
 import locale
+from functions import *
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -24,31 +25,6 @@ products = [
     {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
-
-#Convert to USD Format
-def to_usd(value):
-        locale.setlocale(locale.LC_ALL, 'en_US.utf-8') 
-        s = locale.currency(value, grouping=True)
-        return s
-
-#Convert Month Code
-def month_converter(monthCode):
-    full_month = {'1':'January','2':'February','3':'March','4':'April',
-    '5':'May','6':'June','7':'July','8':'August','9':'September','10':'October',
-    '11':'November', '12':'December'}
-    return full_month[monthCode]
-
-#Convert Timestamps
-def hf_timestamp(utc_Stamp):
-    today = datetime.datetime.now()
-    year = str(today.year)
-    month = str(today.month)
-    month = month_converter(month)
-    day = str(today.day)
-    hour = str(today.hour)
-    minute = str(today.minute)
-    today = month + " " + day + ", " + year + " " + hour + ":" + minute
-    return today 
 
 #Introduce the User
 print("Welcome to Matt's Grocery Store! You are now ready to create a new receipt.")

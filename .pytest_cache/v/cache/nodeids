@@ -1,3 +1,5 @@
 [
-  "test_cart.py::test_function"
+  "test_cart.py::test_to_usd",
+  "test_cart.py::test_month_converter",
+  "test_cart.py::test_hf_timestamp"
 ]
