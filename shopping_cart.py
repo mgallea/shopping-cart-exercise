@@ -1,5 +1,7 @@
 # shopping_cart.py
 import datetime
+import locale
+from functions import *
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -60,25 +62,25 @@ print("------------------------------------------------------------")
 print("www.mystore.com")
 print("+1 (202) 555-5555")
 now = datetime.datetime.now()
-print("Checkout Time: " + now.strftime("%Y-%m-%d %H:%M:%S"))
+print("Checkout Time: " + hf_timestamp(now))
 print("------------------------------------------------------------")
 print("Shopping Cart Items:")
 rec_count = 0
 for item in receipt_list:
-    print("+ " + str(item[0]["name"]) + " ($" + str("%0.2f" % item[0]["price"]) + ")")
+    print("+ " + str(item[0]["name"]) + " (" + to_usd(item[0]["price"]) + ")")
     rec_count = rec_count + 1
 print("------------------------------------------------------------")
-print("Subtotal: " + str("%0.2f" % subtotal))
+print("Subtotal: " + to_usd(subtotal))
 
 #calculate tax
 tax_rate  = 0.06
 
 total_tax = subtotal * (tax_rate)
-print("Sales Tax: (6%): $" + str("%0.2f" % total_tax))
+print("Sales Tax: (6%): " +  to_usd(total_tax))
 
 #Caclulate Total price
 total_price = subtotal + total_tax
-print("Total: $" + str("%0.2f" % total_price))
+print("Total: " + to_usd(total_price))
 print("------------------------------------------------------------")
 print("You have purchased " + str(receipt_counter) + " items")
 print("")
