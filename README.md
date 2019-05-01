@@ -16,6 +16,8 @@ Navigate to the repository from the command line:
 cd shopping-cart-starter-py
 ```
 
+Install the dependencies in Requirements.txt using pip.
+
 ## Usage
 
 Execute the "shopping cart" program:
