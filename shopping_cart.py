@@ -31,9 +31,24 @@ def to_usd(value):
         s = locale.currency(value, grouping=True)
         return s
 
-print(to_usd(100))
-print(to_usd(1000.8484729838928942))
-print(to_usd(10))
+#Convert Month Code
+def month_converter(monthCode):
+    full_month = {'1':'January','2':'February','3':'March','4':'April',
+    '5':'May','6':'June','7':'July','8':'August','9':'September','10':'October',
+    '11':'November', '12':'December'}
+    return full_month[monthCode]
+
+#Convert Timestamps
+def hf_timestamp(utc_Stamp):
+    today = datetime.datetime.now()
+    year = str(today.year)
+    month = str(today.month)
+    month = month_converter(month)
+    day = str(today.day)
+    hour = str(today.hour)
+    minute = str(today.minute)
+    today = month + " " + day + ", " + year + " " + hour + ":" + minute
+    return today 
 
 #Introduce the User
 print("Welcome to Matt's Grocery Store! You are now ready to create a new receipt.")
@@ -71,7 +86,7 @@ print("------------------------------------------------------------")
 print("www.mystore.com")
 print("+1 (202) 555-5555")
 now = datetime.datetime.now()
-print("Checkout Time: " + now.strftime("%Y-%m-%d %H:%M:%S"))
+print("Checkout Time: " + hf_timestamp(now))
 print("------------------------------------------------------------")
 print("Shopping Cart Items:")
 rec_count = 0
